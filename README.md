@@ -4,7 +4,7 @@ OpenGL-bindings for the V programming language.
 ## Information
 Currently, this is in an early stage. All code is currently only tested under ZorinOS (Linux) with V 0.4.1 xxxxx.  
 For testing the (V)GLFW Bindings are used (https://github.com/duarteroso/glfw) which are currently also only
-working for Linux based setups (actually just required to change `flags.v`). (GLFW of course is compatible with all major OSes).
+working for Linux based setups (actually just required to change `flags.v`). (glfw.h usually of course is compatible with all major OSes).
 
 **vGL** uses GLAD to bind OpenGL from C. No pre-install of anything is required. (Except the libglfw for glfw
 to make examples working)
