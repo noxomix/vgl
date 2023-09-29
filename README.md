@@ -1,7 +1,7 @@
 # vGL
 OpenGL-bindings for the V programming language.
 
-## Early Realse!!!
+## Early Release!!!
 Currently, its important that you use my vglfw branch which is in pull request to duartoroso atm.
 So kindly use ` v install https://github.com/noxomix/vglfw ` instead.
 For install vgl use: ` v install noxomix.vGL `.
