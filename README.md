@@ -11,7 +11,7 @@ Install via VPM:
 v install noxomix.vGL
 ```
 
-In order to use OpenGL you dont need to preinstall any shared lib or anything. **vGL** already provides the necassary header-only C library for that.
+In order to use OpenGL you don't need to preinstall any shared lib or anything. **vGL** already provides the necassary header-only C library for that.
 **vGL** uses [Glad](https://gen.glad.sh/) for connecting the OpenGL function with your system. By default, **vGL** comes with the OpenGL 2.0 Version without any
 extensions loaded. In order to use newer Versions (+ one of the many Extensions) this module provides all functions up to OpenGL 4.6, with just replacing the `/c/gl/gl.h` by 
 your prefered Version, downloaded from Glad.
@@ -29,10 +29,10 @@ For all other OS there will be install Guides find on the official [⇱ GLFW-web
 But notice the V-bindings for GLFW currently only working for Linux, you may create a Pull Request to the repositiory. 
 
 ## Usage
-We use GLFW for the Windowing-system in our examples. Feel free to use any other one, **vGl** is not limeted to GLFW.
+We use GLFW for the Windowing-system in our examples. Feel free to use any other one, **vGL** is not limeted to GLFW.
 Luckily [@Duarteroso](https://github.com/duarteroso) provides a GLFW wrapper for V (unfortunatly Linux only for now).  
-If you need a basic example into GLFW, you can use the code from `Readme.md` in [@Duarteroso's](https://github.com/duarteroso) repository: [⇱ Link to VGLFW](https://github.com/duarteroso/glfw).
-Just remember - you need to hook up the context and register the context-pointer to use ` vGL ` in GLFW.
+If you need a basic example into GLFW, you can use the code from `Readme.md` in [@Duarteroso's](https://github.com/duarteroso) repository:   
+[⇱ Link to VGLFW](https://github.com/duarteroso/glfw). Just remember - you need to hook up the context and register the context-pointer to use ` vGL ` in GLFW.
 
 > If anything is not working, don't hesitate to create an Issue and feel free to contact me at Discord `@theonxmx`. I will try my best to fix it.
 
