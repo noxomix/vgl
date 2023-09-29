@@ -4,5 +4,5 @@ Module {
 	version: '0.0.1-1-experimental'
 	license: 'BSD'
 	repo_url: 'https://github.com/noxomix/vGL'
-	dependencies: []
+	dependencies: ['duarteroso.vglfw']
 }
