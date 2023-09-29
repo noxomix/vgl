@@ -1,0 +1,2 @@
+###
+If you want to change the OpenGL Version, you just delete the gl.h and generate your own Glad Loader with help of the glad sh online generator.

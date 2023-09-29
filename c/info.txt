@@ -1,0 +1,3 @@
+###
+The fallback.h header is necessary for compatibility. Else new bindings would have to be generated
+on every new PC and every new GLAD gl.h version, and extension-set. Or one CPU or GPU, whatever.
