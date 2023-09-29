@@ -1,10 +1,42 @@
 # vGL
 OpenGL-bindings for the V programming language.
 
-## Early Release!!!
-Currently, its important that you use my vglfw branch which is in pull request to duartoroso atm.
-So kindly use ` v install https://github.com/noxomix/vglfw ` instead.
-For install vgl use: ` v install noxomix.vGL `.
+## Early Release!!
+> **Notice**, this Library should work on all Major Platforms, but the provided example works only with Linux right now.
+> Also its likely that there are some Bugs can occure, since the function parameter are machine-casted.
+
+## Installation
+Install via VPM:
+```
+v install noxomix.vGL
+```
+
+In order to use OpenGL you dont need to preinstall any shared lib or anything. **vGL** already provides the necassary header-only C library for that.
+**vGL** uses [Glad](https://gen.glad.sh/) for connecting the OpenGL function with your system. By default, **vGL** comes with the OpenGL 2.0 Version without any
+extensions loaded. In order to use newer Versions (+ one of the many Extensions) this module provides all functions up to OpenGL 4.6, with just replacing the `/c/gl/gl.h` by 
+your prefered Version, downloaded from Glad.
+
+In order to be able to use the `examples/gears.v` you need to setup GLFW, under Debian/Ubuntu-based systems you can install the required library by:
+```
+sudo apt-get install libglfw3-dev
+```
+(or without the `-dev`)
+and under Manjaro-based systems use:
+```
+pamac install glfw-x11
+```
+For all other OS there will be install Guides find on the official [⇱ GLFW-website](https://www.glfw.org/documentation.html).
+But notice the V-bindings for GLFW currently only working for Linux, you may create a Pull Request to the repositiory. 
+
+## Usage
+We use GLFW for the Windowing-system in our examples. Feel free to use any other one, **vGl** is not limeted to GLFW.
+Luckily [@Duarteroso](https://github.com/duarteroso) provides a GLFW wrapper for V (unfortunatly Linux only for now).  
+If you need a basic example into GLFW, you can use the code from `Readme.md` in [@Duarteroso's](https://github.com/duarteroso) repository: [⇱ Link to VGLFW](https://github.com/duarteroso/glfw).
+Just remember - you need to hook up the context and register the context-pointer to use ` vGL ` in GLFW.
+
+> If anything is not working, don't hesitate to create an Issue and feel free to contact me at Discord `@theonxmx`. I will try my best to fix it.
+
+
 
 **Gears.v** example:
 ```vlang
@@ -255,27 +287,3 @@ fn main() {
 	exit(0)
 }
 ```
-
-## Information
-Currently, this is in an early stage. All code is currently only tested under ZorinOS (Linux) with V 0.4.1 xxxxx.  
-For testing the (V)GLFW Bindings are used (https://github.com/duarteroso/glfw) which are currently also only
-working for Linux based setups (actually just required to change `flags.v`). (glfw.h usually of course is compatible with all major OSes).
-
-**vGL** uses GLAD to bind OpenGL from C. No pre-install of anything is required. (Except the libglfw for glfw
-to make examples working)
-
-### Generated contents
-The library is partly generated, since its impossible to write 3200+ functions manually, which means
-possibly there could be some problems with function parameters and data types. 
-
-The generators are currently not share-able since they are laking almost every kind of structure,
-the generators for the enums (which are implemented as const's atm) and for the data types, are
-written in Deno (JS) and parsing XML, while I decided to rewrite my function generator in V
-which parses xml-translated json. The generator generates seperatly the C.<fn_name> and the actual
-V-implementation code for every listed opengl function. After that a testing environment tests every
-single of them and reports potential compiler and runtime errors from V. 
-At the moment ` 373 ` out of ` 3293 ` functions produce V errors, while the majority of them
-are caused since there some EXT functions which maybe could be bound if there is a modified
-GLAD header (for example wgl, glx and not just gl) is provided. 
-The 2900-something working function should be enough for the most cases tho.
- **(I may publish the generator scripts soon, after rewrite them, but not in this repo)**.
