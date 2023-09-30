@@ -2,10 +2,10 @@
 OpenGL-bindings for the V programming language.
 
 
-| Operating System  | V-version     | Test   |
-| -------------     | ------------- | -----  |
-| ZorinOS Core 16.3 | 0.4.1 xxxxx   | Passed |
-| ZorinOS Core 16.3 | 0.4.2 413da8b | Passed |
+| Operating System  | V-version     | Test    |
+| -------------     | ------------- |---------|
+| ZorinOS Core 16.3 | 0.4.1 xxxxx   | Working |
+| ZorinOS Core 16.3 | 0.4.2 413da8b | Working |
 
 ## Early Release!!
 > **Notice**, this Library should work on all Major Platforms, but the provided example works only with Linux right now.
