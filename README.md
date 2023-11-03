@@ -9,12 +9,12 @@ OpenGL-bindings for the V programming language.
 
 ## Early Release!!
 > **Notice**, this Library should work on all Major Platforms, but the provided example works only with Linux right now.
-> Also its likely that there are some Bugs can occure, since the function parameter are machine-casted.
+> Also its likely that there are some Bugs can occure, since the function parameters are machine-casted.
 
 ## Installation
 Install via VPM:
 ```
-v install noxomix.vGL
+v install noxomix.vgl
 ```
 
 In order to use OpenGL you don't need to preinstall any shared lib or anything. **vGL** already provides the necassary header-only C library for that.
