@@ -1,4 +1,5 @@
-# vGL
+![vGL](examples/image-removebg-preview.png)
+
 OpenGL-bindings for the V programming language.
 
 ## Early Release!!
