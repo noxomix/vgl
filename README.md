@@ -30,7 +30,7 @@ But notice the V-bindings for GLFW currently only working for Linux, you may cre
 
 ## Usage
 We use GLFW for the Windowing-system in our examples. Feel free to use any other one, **vGL** is not limeted to GLFW.
-Luckily [@Duarteroso]([https://github.com/duarteroso](https://github.com/duarteroso/glfw)) provides a GLFW wrapper for V (unfortunatly Linux only for now).
+Luckily [@Duarteroso]([https://github.com/duarteroso](https://github.com/duarteroso/glfw]) provides a GLFW wrapper for V (unfortunatly Linux only for now).
 Just remember - you need to hook up the context and register the context-pointer to use ` vgl ` in VGLFW (else a `segmentation fault`-error got triggered.
 
 > If anything is not working, don't hesitate to create an Issue and feel free to contact me at Discord `@theonxmx`. I will try my best to fix it.
