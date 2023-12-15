@@ -1,6 +1,6 @@
 module vgl
 
-[typedef]
+@[typedef]
 struct C.GLAD_API_CALL {
 }
 
