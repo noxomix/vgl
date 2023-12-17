@@ -1,6 +1,14 @@
+/*
+   This notDefined() function will be triggered if the compiler tries to compile a OpenGL function
+   which is not available in the selected opengl version. 
+   To change the openGL version you need to download the glad loader with the "header-only"-option
+   selected, and replace the /c/gl/gl.h with you new gl.h .
+   If somebody tries to call a OpenGL function which is not available on that Version/PC then this
+   notDefined() method gets triggered.
+*/
 void notDefined( char const * data) {
-   printf ("[ATTENTION !!!] Function %s(...) is not available at your system. \n", data);
-   printf("[FIX] -> Remove the function from your code.\n");
+   printf ("[noxomix.vgl] [WARNING] Function %s(...) is not available at your system/this openGL version. \n", data);
+   printf("[We recommend to Remove the function from your code.\n");
 }
 
 #ifndef glAccum
