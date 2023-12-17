@@ -579,7 +579,7 @@ pub const (
 	gl_polygon_smooth                     = int(0x0B41)
 	gl_polygon_stipple                    = int(0x0B42)
 	gl_edge_flag                          = int(0x0B43)
-	gl_cull_face_const                    = int(0x0B44) // because its also a function
+	gl_cull_face                          = int(0x0B44)
 	gl_cull_face_mode                     = int(0x0B45)
 	gl_front_face                         = int(0x0B46)
 	gl_lighting                           = int(0x0B50)
