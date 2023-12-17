@@ -3,8 +3,8 @@
 OpenGL-bindings for the V programming language.
 
 ## Early Release!!
-> **Notice**, this Library should work on all Major Platforms, but the provided example works only with Linux right now.
-> Also its likely that there are some Bugs can occure, since the function parameters are machine-casted. I tried many examples tho, and hadnt expirienced any bug yet.
+> **Notice:** This library should work on all major platforms, but the provided example works only with Linux right now.
+> Also, it's likely that there are some bugs that can occur, since the function parameters are machine-casted. I've tried many examples though and haven't experienced any bugs yet.
 
 ## Installation
 Install via VPM:
@@ -12,30 +12,28 @@ Install via VPM:
 v install noxomix.vgl
 ```
 
-In order to use OpenGL you don't need to preinstall any shared lib or anything. **vGL** already provides the necessary header-only C library for that.
-**vGL** uses [Glad](https://gen.glad.sh/) for connecting the OpenGL function with your system. By default, **vGL** comes with the OpenGL 2.0 Version without any
-extensions loaded. In order to use newer Versions (+ one of the many Extensions) this module provides all functions up to OpenGL 4.6, with just replacing the `/c/gl/gl.h` by
-your prefered Version, downloaded from Glad - and your good to go. You need to check the `header-only`-option at glad generator before downloading.
+In order to use OpenGL, you don't need to pre-install any shared library or anything. **vGL** already provides the necessary header-only C library for that.
+**vGL** uses [Glad](https://gen.glad.sh/) to connect the OpenGL function with your system. By default, **vGL** comes with the OpenGL 2.0 version without any extensions loaded. To use newer versions (+ one of the many extensions), this module provides all functions up to OpenGL 4.6. You just need to replace the `/c/gl/gl.h` file with your preferred version downloaded from Glad, and you're good to go. Ensure to check the `header-only` option in the Glad generator before downloading.
 
-In order to be able to use the `examples/gears.v` you need to setup GLFW, under Debian/Ubuntu-based systems you can install the required library by:
+To use the `examples/gears.v`, you need to set up GLFW. Under Debian/Ubuntu-based systems, you can install the required library by executing:
 ```
 sudo apt-get install libglfw3-dev
 ```
-(or without the `-dev`)
-and under Manjaro-based systems use:
+(or without the `-dev`)  
+
+And under Manjaro-based systems, you can install the required library by using the following command:
 ```
 pamac install glfw-x11
 ```
-For all other OS there will be install Guides find on the official [⇱ GLFW-website](https://www.glfw.org/documentation.html).
-But notice the V-bindings for GLFW currently only working for Linux, you may create a Pull Request to the repositiory.
+For all other operating systems, you can find installation guides on the official [⇱ GLFW-website](https://www.glfw.org/documentation.html).
+However, note that the V-bindings for GLFW currently only work for Linux. You may create a Pull Request to the repository.
 
 ## Usage
-We use GLFW for the Windowing-system in our examples. Feel free to use any other one, **vGL** is NOT limeted to GLFW.
-Luckily [@Duarteroso](https://github.com/duarteroso/glfw) provides a GLFW wrapper for V (unfortunatly Linux only for now).
-Just remember - you need to hook up the context and register the context-pointer to use ` vgl ` in VGLFW (else a `segmentation fault`-error got triggered.
+We use GLFW for the windowing system in our examples. Feel free to use any other one, since **vGL** is NOT limited to GLFW!
+Fortunately, [@Duarteroso](https://github.com/duarteroso/glfw) provides a GLFW wrapper for V (only Linux for now).
+Just remember - you need to hook up the context and register the context-pointer to use ` vgl ` in VGLFW (else a `segmentation fault` error gets triggered).
 
-> If anything is not working, don't hesitate to create an Issue and feel free to contact me at Discord `@theonxmx`. I will try my best to fix it.
-
+> If anything is not working, don't hesitate to create an Issue and feel free to contact me on Discord `@theonxmx`. I will try my best to fix it.
 
 Easy Example with (V)GLFW:
 ```vlang
