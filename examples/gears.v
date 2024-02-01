@@ -154,7 +154,7 @@ fn init_(mut gear1 gl.GLint, mut gear2 gl.GLint, mut gear3 gl.GLint) {
 	mut blue := [gl.GLfloat(0.2), 0.2, 1, 1]
 
 	gl.lightfv(gl.gl_light0, gl.gl_position, unsafe {&pos[0]})
-	gl.enable(gl.gl_cull_face_const)
+	gl.enable(gl.gl_cull_face)
 	gl.enable(gl.gl_lighting)
 	gl.enable(gl.gl_light0)
 	gl.enable(gl.gl_depth_test)
