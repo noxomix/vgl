@@ -2,6 +2,9 @@
 
 OpenGL-bindings for the V programming language.
 
+## Version
+Tested with ` V 0.4.4 fb0efc0 ` - gears.v example works well. 
+
 ## Early Release!!
 > **Notice:** This library should work on all major platforms, but the provided example works only with Linux right now.
 > Also, it's likely that there are some bugs that can occur, since the function parameters are machine-casted. I've tried many examples though and haven't experienced any bugs yet.
