@@ -6,9 +6,8 @@
    If somebody tries to call a OpenGL function which is not available on that Version/PC then this
    notDefined() method gets triggered.
 */
-void notDefined( char const * data) {
-   printf ("[noxomix.vgl] [WARNING] Function %s(...) is not available at your system/this openGL version. \n", data);
-   printf("[We recommend to Remove the function from your code.\n");
+void notDefined(char const * data) {
+   printf ("[WARNING] Function %s(...) is not available at your system/this openGL version. \n", data);
 }
 
 #ifndef glAccum
