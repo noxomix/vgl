@@ -8378,7 +8378,7 @@ pub fn get_uniform_buffer_size_ext(program GLuint, location GLint) GLint {
 }
 
 pub fn get_uniform_indices(program GLuint, uniform_count GLsizei, uniform_names &&GLchar, uniform_indices &GLuint) {
-	C.glGetUniformIndices(program, uniform_count, uniform_names, uniform_indices)
+	C.glGetUniformIndices(program, uniform_count, v_to_cv(uniform_names), uniform_indices)
 }
 
 pub fn get_uniform_location(program GLuint, name &GLchar) GLint {
@@ -8924,7 +8924,7 @@ pub fn index_pointer_ext(type__ GLenum, stride GLsizei, count GLsizei, pointer v
 }
 
 pub fn index_pointer_list_ibm(type__ GLenum, stride GLint, pointer &voidptr, ptrstride GLint) {
-	C.glIndexPointerListIBM(type__, stride, pointer, ptrstride)
+	C.glIndexPointerListIBM(type__, stride, v_to_cv(pointer), ptrstride)
 }
 
 pub fn indexd(c GLdouble) {
@@ -9372,8 +9372,7 @@ pub fn list_base(base GLuint) {
 }
 
 pub fn list_draw_commands_states_client_nv(list GLuint, segment GLuint, indirects &voidptr, sizes &GLsizei, states &GLuint, fbos &GLuint, count GLuint) {
-	C.glListDrawCommandsStatesClientNV(list, segment, indirects, sizes, states, fbos,
-		count)
+	C.glListDrawCommandsStatesClientNV(list, segment, v_to_cv(indirects), sizes, states, fbos, count)
 }
 
 pub fn list_parameterf_sgix(list GLuint, pname GLenum, param GLfloat) {
@@ -9905,19 +9904,19 @@ pub fn multi_draw_element_array_apple(mode GLenum, first &GLint, count &GLsizei,
 }
 
 pub fn multi_draw_elements(mode GLenum, count &GLsizei, type__ GLenum, indices &voidptr, drawcount GLsizei) {
-	C.glMultiDrawElements(mode, count, type__, indices, drawcount)
+	C.glMultiDrawElements(mode, count, type__, v_to_cv(indices), drawcount)
 }
 
 pub fn multi_draw_elements_base_vertex(mode GLenum, count &GLsizei, type__ GLenum, indices &voidptr, drawcount GLsizei, basevertex &GLint) {
-	C.glMultiDrawElementsBaseVertex(mode, count, type__, indices, drawcount, basevertex)
+	C.glMultiDrawElementsBaseVertex(mode, count, type__, v_to_cv(indices), drawcount, basevertex)
 }
 
 pub fn multi_draw_elements_base_vertex_ext(mode GLenum, count &GLsizei, type__ GLenum, indices &voidptr, drawcount GLsizei, basevertex &GLint) {
-	C.glMultiDrawElementsBaseVertexEXT(mode, count, type__, indices, drawcount, basevertex)
+	C.glMultiDrawElementsBaseVertexEXT(mode, count, type__, v_to_cv(indices), drawcount, basevertex)
 }
 
 pub fn multi_draw_elements_ext(mode GLenum, count &GLsizei, type__ GLenum, indices &voidptr, primcount GLsizei) {
-	C.glMultiDrawElementsEXT(mode, count, type__, indices, primcount)
+	C.glMultiDrawElementsEXT(mode, count, type__, v_to_cv(indices), primcount)
 }
 
 pub fn multi_draw_elements_indirect(mode GLenum, type__ GLenum, indirect voidptr, drawcount GLsizei, stride GLsizei) {
@@ -9969,7 +9968,7 @@ pub fn multi_mode_draw_arrays_ibm(mode &GLenum, first &GLint, count &GLsizei, pr
 }
 
 pub fn multi_mode_draw_elements_ibm(mode &GLenum, count &GLsizei, type__ GLenum, indices &voidptr, primcount GLsizei, modestride GLint) {
-	C.glMultiModeDrawElementsIBM(mode, count, type__, indices, primcount, modestride)
+	C.glMultiModeDrawElementsIBM(mode, count, type__, v_to_cv(indices), primcount, modestride)
 }
 
 pub fn multi_tex_buffer_ext(texunit GLenum, target GLenum, internalformat GLenum, buffer GLuint) {
@@ -10829,11 +10828,11 @@ pub fn normal_pointer_ext(type__ GLenum, stride GLsizei, count GLsizei, pointer 
 }
 
 pub fn normal_pointer_list_ibm(type__ GLenum, stride GLint, pointer &voidptr, ptrstride GLint) {
-	C.glNormalPointerListIBM(type__, stride, pointer, ptrstride)
+	C.glNormalPointerListIBM(type__, stride, v_to_cv(pointer), ptrstride)
 }
 
 pub fn normal_pointerv_intel(type__ GLenum, pointer &voidptr) {
-	C.glNormalPointervINTEL(type__, pointer)
+	C.glNormalPointervINTEL(type__, v_to_cv(pointer))
 }
 
 pub fn normal_stream_3b_ati(stream GLenum, nx GLbyte, ny GLbyte, nz GLbyte) {
@@ -12416,7 +12415,7 @@ pub fn renderbuffer_storage_oes(target GLenum, internalformat GLenum, width GLsi
 }
 
 pub fn replacement_code_pointer_sun(type__ GLenum, stride GLsizei, pointer &voidptr) {
-	C.glReplacementCodePointerSUN(type__, stride, pointer)
+	C.glReplacementCodePointerSUN(type__, stride, v_to_cv(pointer))
 }
 
 pub fn replacement_codeub_sun(code GLubyte) {
@@ -12874,7 +12873,7 @@ pub fn secondary_color_pointer_ext(size GLint, type__ GLenum, stride GLsizei, po
 }
 
 pub fn secondary_color_pointer_list_ibm(size GLint, type__ GLenum, stride GLint, pointer &voidptr, ptrstride GLint) {
-	C.glSecondaryColorPointerListIBM(size, type__, stride, pointer, ptrstride)
+	C.glSecondaryColorPointerListIBM(size, type__, stride, v_to_cv(pointer), ptrstride)
 }
 
 pub fn select_buffer(size GLsizei, buffer &GLuint) {
@@ -12948,11 +12947,11 @@ pub fn shader_op_3ext(op GLenum, res GLuint, arg_1 GLuint, arg_2 GLuint, arg_3 G
 }
 
 pub fn shader_source(shader GLuint, count GLsizei, string__ &&GLchar, length &GLint) {
-	C.glShaderSource(shader, count, string__, length)
+	C.glShaderSource(shader, count, v_to_cv(string__), length)
 }
 
 pub fn shader_source_arb(shader_obj GLhandleARB, count GLsizei, string__ &&GLcharARB, length &GLint) {
-	C.glShaderSourceARB(shader_obj, count, string__, length)
+	C.glShaderSourceARB(shader_obj, count, v_to_cv(string__), length)
 }
 
 pub fn shader_storage_block_binding(program GLuint, storage_block_index GLuint, storage_block_binding GLuint) {
@@ -13572,11 +13571,11 @@ pub fn tex_coord_pointer_ext(size GLint, type__ GLenum, stride GLsizei, count GL
 }
 
 pub fn tex_coord_pointer_list_ibm(size GLint, type__ GLenum, stride GLint, pointer &voidptr, ptrstride GLint) {
-	C.glTexCoordPointerListIBM(size, type__, stride, pointer, ptrstride)
+	C.glTexCoordPointerListIBM(size, type__, stride, v_to_cv(pointer), ptrstride)
 }
 
 pub fn tex_coord_pointerv_intel(size GLint, type__ GLenum, pointer &voidptr) {
-	C.glTexCoordPointervINTEL(size, type__, pointer)
+	C.glTexCoordPointervINTEL(size, type__, v_to_cv(pointer))
 }
 
 pub fn tex_envf(target GLenum, pname GLenum, param GLfloat) {
@@ -14194,11 +14193,11 @@ pub fn transform_feedback_stream_attribs_nv(count GLsizei, attribs &GLint, nbuff
 }
 
 pub fn transform_feedback_varyings(program GLuint, count GLsizei, varyings &&GLchar, buffer_mode GLenum) {
-	C.glTransformFeedbackVaryings(program, count, varyings, buffer_mode)
+	C.glTransformFeedbackVaryings(program, count, v_to_cv(varyings), buffer_mode)
 }
 
 pub fn transform_feedback_varyings_ext(program GLuint, count GLsizei, varyings &&GLchar, buffer_mode GLenum) {
-	C.glTransformFeedbackVaryingsEXT(program, count, varyings, buffer_mode)
+	C.glTransformFeedbackVaryingsEXT(program, count, v_to_cv(varyings), buffer_mode)
 }
 
 pub fn transform_feedback_varyings_nv(program GLuint, count GLsizei, locations &GLint, buffer_mode GLenum) {
@@ -16140,11 +16139,11 @@ pub fn vertex_pointer_ext(size GLint, type__ GLenum, stride GLsizei, count GLsiz
 }
 
 pub fn vertex_pointer_list_ibm(size GLint, type__ GLenum, stride GLint, pointer &voidptr, ptrstride GLint) {
-	C.glVertexPointerListIBM(size, type__, stride, pointer, ptrstride)
+	C.glVertexPointerListIBM(size, type__, stride, v_to_cv(pointer), ptrstride)
 }
 
 pub fn vertex_pointerv_intel(size GLint, type__ GLenum, pointer &voidptr) {
-	C.glVertexPointervINTEL(size, type__, pointer)
+	C.glVertexPointervINTEL(size, type__, v_to_cv(pointer))
 }
 
 pub fn vertex_stream_1d_ati(stream GLenum, x GLdouble) {
