@@ -11,6 +11,7 @@ const(
 
 fn gear(inner_radius gl.GLfloat, outer_radius gl.GLfloat, width gl.GLfloat, teeth gl.GLint, tooth_depth gl.GLfloat) {
 	mut i := gl.GLint(0)
+	gl.v_to_cv(voidptr(i))
 	mut u, mut v, mut len := gl.GLfloat(0), gl.GLfloat(0), gl.GLfloat(0)
 	mut r0 := inner_radius
 	mut r1 := gl.GLfloat(outer_radius - tooth_depth / 2)
