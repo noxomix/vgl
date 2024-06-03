@@ -2,7 +2,7 @@ module vgl
 
 #flag -I @VMODROOT/c/
 #define GLAD_GL_IMPLEMENTATION
-#include "/gl/gl.h"
+#include "gl/gl.h"
 #include "fallback.h"
 
 #include <math.h>
