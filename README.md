@@ -95,6 +95,7 @@ const(
 
 fn gear(inner_radius gl.GLfloat, outer_radius gl.GLfloat, width gl.GLfloat, teeth gl.GLint, tooth_depth gl.GLfloat) {
 	mut i := gl.GLint(0)
+	gl.v_to_cv(voidptr(i))
 	mut u, mut v, mut len := gl.GLfloat(0), gl.GLfloat(0), gl.GLfloat(0)
 	mut r0 := inner_radius
 	mut r1 := gl.GLfloat(outer_radius - tooth_depth / 2)
@@ -229,7 +230,7 @@ fn animate(mut angle gl.GLfloat) {
 	angle = f32(100) * glfw.get_time() or {exit(0)}
 }
 
-// program & OpenGL initialization
+/* program & OpenGL initialization */
 fn init_(mut gear1 gl.GLint, mut gear2 gl.GLint, mut gear3 gl.GLint) {
 
 	mut pos := [gl.GLfloat(5), 5, 10, 0]
@@ -238,7 +239,7 @@ fn init_(mut gear1 gl.GLint, mut gear2 gl.GLint, mut gear3 gl.GLint) {
 	mut blue := [gl.GLfloat(0.2), 0.2, 1, 1]
 
 	gl.lightfv(gl.gl_light0, gl.gl_position, unsafe {&pos[0]})
-	gl.enable(gl.gl_cull_face_const)
+	gl.enable(gl.gl_cull_face)
 	gl.enable(gl.gl_lighting)
 	gl.enable(gl.gl_light0)
 	gl.enable(gl.gl_depth_test)
