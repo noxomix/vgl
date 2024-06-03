@@ -1,5 +1,6 @@
 module vgl
 
+fn C.VtoCV(v voidptr) voidptr
 fn C.glAccum(op GLenum, value GLfloat) //[INFO] AccumOp|Coord|
 fn C.glAccumxOES(op GLenum, value GLfixed)
 fn C.glActiveProgramEXT(program GLuint) //[INFO] program|
@@ -1180,7 +1181,7 @@ fn C.glGetShadingRateSampleLocationivNV(rate GLenum, samples GLuint, index GLuin
 fn C.glGetSharpenTexFuncSGIS(target GLenum, points &GLfloat) //[INFO] TextureTarget|COMPSIZE(target)|
 fn C.glGetStageIndexNV(shadertype GLenum) GLushort //[INFO] ShaderType|
 fn C.glGetString(name GLenum) &GLubyte //[INFO] StringName|
-fn C.glGetStringi(name GLenum, index GLuint) &GLubyte //[INFO] StringName|
+fn C.glGetStringi(name GLenum, index GLuint) GLubyte //[INFO] StringName| achtung: &GLubyte wieder hin machen!!!
 fn C.glGetSubroutineIndex(program GLuint, shadertype GLenum, name &GLchar) GLuint //[INFO] program|ShaderType|
 fn C.glGetSubroutineUniformLocation(program GLuint, shadertype GLenum, name &GLchar) GLint //[INFO] program|ShaderType|
 fn C.glGetSynciv(sync GLsync, pname GLenum, count GLsizei, length &GLsizei, values &GLint) //[INFO] sync|SyncParameterName|1|count|
@@ -3295,6 +3296,10 @@ fn C.glFramebufferParameteriMESA(target GLenum, pname GLenum, param GLint) //[IN
 fn C.glGetFramebufferParameterivMESA(target GLenum, pname GLenum, params &GLint) //[INFO] FramebufferTarget|FramebufferAttachmentParameterName|COMPSIZE(pname)|
 
 // bindings section
+pub fn v_to_cv(v voidptr) voidptr {
+    return C.VtoCV(v)
+}
+
 pub fn accum(op GLenum, value GLfloat) {
 	C.glAccum(op, value)
 }
@@ -4517,11 +4522,11 @@ pub fn color_pointer_ext(size GLint, type__ GLenum, stride GLsizei, count GLsize
 }
 
 pub fn color_pointer_list_ibm(size GLint, type__ GLenum, stride GLint, pointer &voidptr, ptrstride GLint) {
-	C.glColorPointerListIBM(size, type__, stride, pointer, ptrstride)
+	C.glColorPointerListIBM(size, type__, stride, v_to_cv(pointer), ptrstride)
 }
 
 pub fn color_pointerv_intel(size GLint, type__ GLenum, pointer &voidptr) {
-	C.glColorPointervINTEL(size, type__, pointer)
+	C.glColorPointervINTEL(size, type__, v_to_cv(pointer))
 }
 
 pub fn color_sub_table(target GLenum, start GLsizei, count GLsizei, format GLenum, type__ GLenum, data voidptr) {
@@ -4606,7 +4611,7 @@ pub fn compile_shader_arb(shader_obj GLhandleARB) {
 }
 
 pub fn compile_shader_include_arb(shader GLuint, count GLsizei, path &&GLchar, length &GLint) {
-	C.glCompileShaderIncludeARB(shader, count, path, length)
+	C.glCompileShaderIncludeARB(shader, count, v_to_cv(path), length)
 }
 
 pub fn compressed_multi_tex_image_1dext(texunit GLenum, target GLenum, level GLint, internalformat GLenum, width GLsizei, border GLint, image_size GLsizei, bits voidptr) {
@@ -5097,11 +5102,11 @@ pub fn create_shader_program_ext(type__ GLenum, string__ &GLchar) GLuint {
 }
 
 pub fn create_shader_programv(type__ GLenum, count GLsizei, strings &&GLchar) GLuint {
-	return C.glCreateShaderProgramv(type__, count, strings)
+	return C.glCreateShaderProgramv(type__, count, v_to_cv(strings))
 }
 
 pub fn create_shader_programv_ext(type__ GLenum, count GLsizei, strings &&GLchar) GLuint {
-	return C.glCreateShaderProgramvEXT(type__, count, strings)
+	return C.glCreateShaderProgramvEXT(type__, count, v_to_cv(strings))
 }
 
 pub fn create_states_nv(n GLsizei, states &GLuint) {
@@ -5109,7 +5114,7 @@ pub fn create_states_nv(n GLsizei, states &GLuint) {
 }
 
 pub fn create_sync_from_clevent_arb(context &CLcontext, event &CLevent, flags GLbitfield) GLsync {
-	return C.glCreateSyncFromCLeventARB(context, event, flags)
+	return C.glCreateSyncFromCLeventARB(*context, *event, flags)
 }
 
 pub fn create_textures(target GLenum, n GLsizei, textures &GLuint) {
@@ -5862,7 +5867,7 @@ pub fn edge_flag_pointer_ext(stride GLsizei, count GLsizei, pointer &GLboolean) 
 }
 
 pub fn edge_flag_pointer_list_ibm(stride GLint, pointer &&GLboolean, ptrstride GLint) {
-	C.glEdgeFlagPointerListIBM(stride, pointer, ptrstride)
+	C.glEdgeFlagPointerListIBM(stride, v_to_cv(pointer), ptrstride)
 }
 
 pub fn edge_flagv(flag &GLboolean) {
@@ -6251,7 +6256,7 @@ pub fn fog_coord_pointer_ext(type__ GLenum, stride GLsizei, pointer voidptr) {
 }
 
 pub fn fog_coord_pointer_list_ibm(type__ GLenum, stride GLint, pointer &voidptr, ptrstride GLint) {
-	C.glFogCoordPointerListIBM(type__, stride, pointer, ptrstride)
+	C.glFogCoordPointerListIBM(type__, stride, v_to_cv(pointer), ptrstride)
 }
 
 pub fn fog_coordd(coord GLdouble) {
@@ -8110,10 +8115,11 @@ pub fn get_stage_index_nv(shadertype GLenum) GLushort {
 }
 
 pub fn get_string(name GLenum) &GLubyte {
-	return C.glGetString(name)
+	return voidptr(C.glGetString(name))
 }
 
-pub fn get_stringi(name GLenum, index GLuint) &GLubyte {
+pub fn get_stringi(name GLenum, index GLuint) GLubyte {
+	//todo: Workaround usually this should return &GLubyte but didnt managed to fix :(
 	return C.glGetStringi(name, index)
 }
 

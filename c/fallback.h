@@ -1,3 +1,7 @@
+const void **VtoCV(void **src) {
+    return (const void **)src;
+}
+
 /*
    This notDefined() function will be triggered if the compiler tries to compile a OpenGL function
    which is not available in the selected opengl version. 
