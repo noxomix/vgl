@@ -2,6 +2,10 @@
 
 OpenGL-bindings for the V programming language.
 
+## Warning:
+> Currently, there is a bug when building the project in production mode. Due to my limited skills in low-level programming,
+> I don’t see a way to fix this library at the moment. It may also be considered discontinued, as I no longer program in V these days.
+
 ## Version
 Tested with ` V 0.4.4 fb0efc0 ` - gears.v example works well. 
 
